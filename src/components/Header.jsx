@@ -1,5 +1,5 @@
 import React from "react";
-import { cartIcon, darkLogo } from "../assets";
+import { cartIcon, darkLogo, userIcon } from "../assets";
 
 export const Header = () => {
   return (
@@ -16,8 +16,13 @@ export const Header = () => {
                 <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer "> Element </li>
                 <li className="text-base text-black font-bold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer "> Blog </li>
             </ul>
-            <div>
+            <div className="w-20 bg-amber-200 p-3 rounded-md flex gap-4">
                 <img className="w-6" src={ cartIcon } alt="Cart image" />
+                <p className="text-lg font-bold">2</p>
+            </div>
+
+            <div>
+                <img className="w-9 h-9 rounded-full" src={ userIcon } alt="userLogo" />
             </div>
         </div>
       </div>
