@@ -1,9 +1,81 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 
 const ProductDetails = () => {
-  return (
-    <div>ProductDetails</div>
-  )
-}
+    const [details, setDetails] = useState({});
+    const Location = useLocation();
+    useEffect(() => {
+        setDetails(Location.state.item);
+    }, []);
+
+    return (
+        <div>
+            <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
+                <div className="w-2/5 relative">
+                    <img
+                        className="w-full h-[650px] object-cover rounded-2xl"
+                        src={details.image}
+                        alt="product image"
+                    />
+                    <div className="absolute top-4 right-0">
+                        {details.isNew && (
+                            <p className="bg-black text-white font-semibold px-6 py-3">
+                                sale
+                            </p>
+                        )}
+                    </div>
+                </div>
+
+                <div className="w-3/5 flex flex-col justify-center gap-12 ">
+                    <div>
+                        <h2 className="text-4xl font-semibold">
+                            {details.title}
+                        </h2>
+
+                        <div className="flex items-center gap-4 mt-3">
+                            <p className="line-through text-gray-500">
+                                $ {details.oldPrice}
+                            </p>
+                            <p className="font-semibold">$ {details.price}</p>
+                        </div>
+                    </div>
+
+                    <div className="flex items-center gap-4 text-base">
+                        <div className="flex gap-1">
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                            <FaStar />
+                        </div>
+                        <p className="text-xs text-gray-500">
+                            (217 customer review)
+                        </p>
+                    </div>
+                    <p className="text-base text-gray-500 -mt-3">
+                        {details.description}
+                    </p>
+                    <div>
+                        <div className="flex items-center gap-6">
+                            <div className="flex items-center gap-6 border-[2px] px-4 py-2">
+                                <p className="text-sm">Quantity</p>
+                                <div className="flex items-center gap-4 text-sm font-semibold">
+                                    <button className="hover:bg-black hover:text-white px-2 rounded-full duration-500">-</button>
+                                    <span> {2} </span>
+                                    <button className="hover:bg-black hover:text-white px-2 rounded-full duration-500" >+</button>
+                                </div>
+                            </div>
+                            <button className="bg-black px-6 py-2 text-white hover:rounded-lg  duration-300">
+                                Add item
+                            </button>
+                        </div>
+                    </div>
+                    <div>Category: <span className=" font-medium capitalize"> {details.category} </span> </div>
+                </div>
+            </div>
+        </div>
+    );
+};
 
 export default ProductDetails;

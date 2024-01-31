@@ -19,6 +19,7 @@ const Layout = () => {
   return (
     <>
       <Header />
+      <ScrollRestoration/>
       <Outlet />
       <Footer />
     </>
