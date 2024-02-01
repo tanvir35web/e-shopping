@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 export const Header = () => {
-
     const productData = useSelector((state) => state.shopping.productData);
 
     return (
@@ -40,10 +39,19 @@ export const Header = () => {
                             Blog{" "}
                         </li>
                     </ul>
-                    <div className="w-20 bg-amber-200 p-3 rounded-md flex gap-4">
-                        <img className="w-6" src={cartIcon} alt="Cart image" />
-                        <p className="text-lg font-bold"> {productData.length} </p>
-                    </div>
+                    <Link to="/cart">
+                        <div className="w-20 bg-amber-200 p-3 rounded-md flex gap-4">
+                            <img
+                                className="w-6"
+                                src={cartIcon}
+                                alt="Cart image"
+                            />
+                            <p className="text-lg font-bold">
+                                {" "}
+                                {productData.length}{" "}
+                            </p>
+                        </div>
+                    </Link>
 
                     <div>
                         <img

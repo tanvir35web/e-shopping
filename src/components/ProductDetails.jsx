@@ -3,13 +3,13 @@ import { useLocation } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/shoppingSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductDetails = () => {
     const dispatch = useDispatch();
     const [baseQuantity, setBaseQuantity] = useState(1);
     const [details, setDetails] = useState({});
     const Location = useLocation();
- 
 
     useEffect(() => {
         setDetails(Location.state.item);
@@ -20,13 +20,13 @@ const ProductDetails = () => {
             <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
                 <div className="w-2/5 relative">
                     <img
-                        className="w-full h-[650px] object-cover rounded-2xl"
+                        className="w-full h-[650px] object-cover rounded-2xl shadow-lg"
                         src={details.image}
                         alt="product image"
                     />
-                    <div className="absolute top-4 right-0">
+                    <div className="absolute top-4 right-2">
                         {details.isNew && (
-                            <p className="bg-black text-white font-semibold px-6 py-3">
+                            <p className="bg-black text-white font-semibold px-6 py-3 rounded-2xl">
                                 sale
                             </p>
                         )}
@@ -101,9 +101,9 @@ const ProductDetails = () => {
                                             quantity: baseQuantity,
                                             description: details.description,
                                         })
-                                    )
+                                    ) & toast.success(`${details.title} is added`)
                                 }
-                                className="bg-gray-700 px-6 py-2 text-white hover:rounded-lg  duration-300"
+                                className="bg-gray-700 px-6 py-2 text-white hover:bg-amber-300 hover:text-black font-semibold  duration-300"
                             >
                                 Add item
                             </button>
@@ -118,6 +118,18 @@ const ProductDetails = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="top-left"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };

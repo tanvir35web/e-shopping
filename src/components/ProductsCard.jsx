@@ -3,6 +3,7 @@ import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addToCart } from "../redux/shoppingSlice";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductsCard = ({ product }) => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const ProductsCard = ({ product }) => {
 
     const _id = product.title;
     const idString = (_id) => {
-        return String(_id).toLowerCase().split(" ").join("");
+        return String(_id).toLowerCase().split(" ").join("-");
     };
 
     const rootId = idString(_id);
@@ -29,7 +30,7 @@ const ProductsCard = ({ product }) => {
             
             className="group border-[1px] relative shadow-sm "
         >
-            <div onClick={productClick} className="w-full h-96 overflow-hidden cursor-pointer ">
+            <div onClick={productClick} className="w-full h-[400px] overflow-hidden cursor-pointer ">
                 <img
                     className="w-full h-full object-cover group-hover:scale-110 duration-500 "
                     src={product.image}
@@ -37,7 +38,7 @@ const ProductsCard = ({ product }) => {
                 />
             </div>
 
-            <div className="w-full  px-2 py-4 flex justify-between">
+            <div className="w-full h-[60px] px-2 py-4 flex justify-between">
                 <div>
                     <h2 className="text-base font-semibold">
                         {product.title.substring(0, 15)}
@@ -61,9 +62,9 @@ const ProductsCard = ({ product }) => {
                                     quantity: 1,
                                     description: product.description,
                                 })
-                            )
+                            ) & toast.success(`${product.title} is added`)
                         }
-                        className="absolute z-20 w-[100] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 "
+                        className="absolute z-20 w-[100] bg-amber-200 text-black font-medium p-1 justify-center rounded-md flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 "
                     >
                         add to cart
                         <span>
@@ -80,6 +81,18 @@ const ProductsCard = ({ product }) => {
                     </p>
                 )}
             </div>
+            <ToastContainer
+                position="top-left"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };

@@ -6,7 +6,7 @@ const Products = ({ products }) => {
   return (
     <div className="py-10">
       <div className="flex flex-col items-center gap-4">
-        <h1 className="bg-black text-white text-2xl w-80 p-2 text-center">
+        <h1 className="bg-gray-900 rounded-2xl text-white text-2xl w-80 px-4 py-2 text-center">
           Shopping Everyday
         </h1>
         <span className="w-20 h-[3px] bg-black rounded-xl"></span>
@@ -24,6 +24,7 @@ const Products = ({ products }) => {
           <ProductsCard key={item._id} product={item} />
         ))}
       </div>
+     
     </div>
   );
 };
