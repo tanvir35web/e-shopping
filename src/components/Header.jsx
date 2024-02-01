@@ -1,8 +1,12 @@
 import React from "react";
 import { cartIcon, darkLogo, userIcon } from "../assets";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 export const Header = () => {
+
+    const productData = useSelector((state) => state.shopping.productData);
+
     return (
         <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 font-bodyFont sticky top-0 z-50">
             <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
@@ -38,7 +42,7 @@ export const Header = () => {
                     </ul>
                     <div className="w-20 bg-amber-200 p-3 rounded-md flex gap-4">
                         <img className="w-6" src={cartIcon} alt="Cart image" />
-                        <p className="text-lg font-bold">2</p>
+                        <p className="text-lg font-bold"> {productData.length} </p>
                     </div>
 
                     <div>

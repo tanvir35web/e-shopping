@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { FaStar } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/shoppingSlice";
 
 const ProductDetails = () => {
+    const dispatch = useDispatch();
+    const [baseQuantity, setBaseQuantity] = useState(1);
     const [details, setDetails] = useState({});
     const Location = useLocation();
+ 
+
     useEffect(() => {
         setDetails(Location.state.item);
     }, []);
@@ -61,17 +67,55 @@ const ProductDetails = () => {
                             <div className="flex items-center gap-6 border-[2px] px-4 py-2">
                                 <p className="text-sm">Quantity</p>
                                 <div className="flex items-center gap-4 text-sm font-semibold">
-                                    <button className="hover:bg-black hover:text-white px-2 rounded-full duration-500">-</button>
-                                    <span> {2} </span>
-                                    <button className="hover:bg-black hover:text-white px-2 rounded-full duration-500" >+</button>
+                                    <button
+                                        onClick={() =>
+                                            setBaseQuantity(
+                                                baseQuantity === 1
+                                                    ? (baseQuantity = 1)
+                                                    : baseQuantity - 1
+                                            )
+                                        }
+                                        className="hover:bg-black hover:text-white px-2 rounded-full duration-500"
+                                    >
+                                        -
+                                    </button>
+                                    <span> {baseQuantity} </span>
+                                    <button
+                                        onClick={() =>
+                                            setBaseQuantity(baseQuantity + 1)
+                                        }
+                                        className="hover:bg-black hover:text-white px-2 rounded-full duration-500"
+                                    >
+                                        +
+                                    </button>
                                 </div>
                             </div>
-                            <button className="bg-black px-6 py-2 text-white hover:rounded-lg  duration-300">
+                            <button
+                                onClick={() =>
+                                    dispatch(
+                                        addToCart({
+                                            _id: details._id,
+                                            title: details.title,
+                                            image: details.image,
+                                            price: details.price,
+                                            quantity: baseQuantity,
+                                            description: details.description,
+                                        })
+                                    )
+                                }
+                                className="bg-gray-700 px-6 py-2 text-white hover:rounded-lg  duration-300"
+                            >
                                 Add item
                             </button>
                         </div>
                     </div>
-                    <div>Category: <span className=" font-medium capitalize"> {details.category} </span> </div>
+                    <div>
+                        Category:{" "}
+                        <span className=" font-medium capitalize">
+                            {" "}
+                            {details.category}{" "}
+                        </span>{" "}
+                    </div>
                 </div>
             </div>
         </div>

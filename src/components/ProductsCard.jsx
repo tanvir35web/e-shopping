@@ -1,29 +1,35 @@
 import React from "react";
 import { BsArrowRight } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addToCart } from "../redux/shoppingSlice";
 
 const ProductsCard = ({ product }) => {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const _id = product.title;
-    const idString =(_id) => {
+    const idString = (_id) => {
         return String(_id).toLowerCase().split(" ").join("");
-    }
+    };
 
     const rootId = idString(_id);
 
     console.log(rootId);
     const productClick = () => {
-      navigate(`/product/${rootId}`, {
-        state: {
-            item: product, 
-        }
-      })
-    }
+        navigate(`/product/${rootId}`, {
+            state: {
+                item: product,
+            },
+        });
+    };
 
     return (
-        <div onClick={productClick} className="group border-[1px] relative shadow-sm ">
-            <div className="w-full h-96 overflow-hidden cursor-pointer ">
+        <div
+            
+            className="group border-[1px] relative shadow-sm "
+        >
+            <div onClick={productClick} className="w-full h-96 overflow-hidden cursor-pointer ">
                 <img
                     className="w-full h-full object-cover group-hover:scale-110 duration-500 "
                     src={product.image}
@@ -44,7 +50,21 @@ const ProductsCard = ({ product }) => {
                         </p>
                         <p className="font-semibold">$ {product.price}</p>
                     </div>
-                    <p className="absolute z-20 w-[100] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 ">
+                    <p
+                        onClick={() =>
+                            dispatch(
+                                addToCart({
+                                    _id: product._id,
+                                    title: product.title,
+                                    image: product.image,
+                                    price: product.price,
+                                    quantity: 1,
+                                    description: product.description,
+                                })
+                            )
+                        }
+                        className="absolute z-20 w-[100] text-gray-500 hover:text-gray-900 flex items-center gap-1 top-0 transform -translate-x-32 group-hover:translate-x-0 transition-transform cursor-pointer duration-500 "
+                    >
                         add to cart
                         <span>
                             <BsArrowRight />
@@ -53,7 +73,13 @@ const ProductsCard = ({ product }) => {
                 </div>
             </div>
             <div className="text-base mx-2 my-1">{product.category}</div>
-            <div className="absolute top-4 right-0">{product.isNew && <p className="bg-black text-white font-semibold px-6 py-1">sale</p>}</div>
+            <div className="absolute top-4 right-0">
+                {product.isNew && (
+                    <p className="bg-black text-white font-semibold px-6 py-1">
+                        sale
+                    </p>
+                )}
+            </div>
         </div>
     );
 };
