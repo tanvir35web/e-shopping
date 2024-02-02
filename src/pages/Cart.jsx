@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { cartImg } from "../assets";
 import CartItem from "../components/cartItem";
 
 const Cart = () => {
     const productData = useSelector((item) => item.shopping.productData);
-    console.log(productData);
-
+    const [totalAmount, setTotalAmount] = useState("");
+    useEffect(() => {
+        let price = 0;
+        productData.map((item) => {
+            price += item.price * item.quantity;
+            return price;
+        });
+        setTotalAmount(price.toFixed(2));
+    }, [productData]);
     return (
         <div>
             <img
@@ -21,21 +27,23 @@ const Cart = () => {
                     <div className="flex flex-col border-b-[1px] gap-6 border-b-gray-400 pb-6">
                         <h2 className="text-2xl font-medium">Cart Total</h2>
                         <p className="flex items-center gap-4 mt-3 text-base">
-                            Sub Total{" "}
-                            <span className="font-bold text-lg"> 1250$ </span>
+                            Sub Total
+                            <span className="font-bold text-lg">
+                                ${totalAmount}
+                            </span>
                         </p>
                         <p className="flex items-start gap-4 text-base">
-                            Shipping{" "}
+                            Shipping
                             <span className="">
-                                {" "}
+                                
                                 Lorem ipsum dolor sit, amet consectetur
                                 adipisicing elit. Pariatur rerum
                             </span>
                         </p>
                     </div>
                     <p className="flex justify-between mt-6  text-lg">
-                        Total Amount{" "}
-                        <span className="font-bold text-xl"> $960 </span>
+                        Total Amount
+                    <span className="font-bold text-xl"> $ {totalAmount} </span>
                     </p>
                     <button className="bg-black text-white text-base w-full py-3 mt-6 hover:bg-gray-800 duration-200">
                         proceed to checkout
