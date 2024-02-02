@@ -26,7 +26,7 @@ const CartItem = () => {
                 {productData.map((item) => (
                     <div
                         key={item._id}
-                        className="flex items-center justify-between gap-6 mt-6 bg-gray-100 rounded-lg p-2"
+                        className="flex items-center justify-between gap-6 mt-6 border-b border-b-gray-200  p-2"
                     >
                         <div className="flex items-center gap-2">
                             <MdOutlineClose
@@ -37,7 +37,7 @@ const CartItem = () => {
                                 className="text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300"
                             />
                             <img
-                                className="w-36 h-36 object-cover rounded-lg"
+                                className="w-36 h-36 object-cover rounded-2xl border border-gray-200"
                                 src={item.image}
                                 alt="product image"
                             />
