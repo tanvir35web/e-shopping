@@ -1,10 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { MdOutlineClose } from "react-icons/md";
 import { HiOutlineArrowLeft } from "react-icons/hi";
-import { decrementQuantity, incrementQuantity } from "../redux/shoppingSlice";
+import {
+    decrementQuantity,
+    deleteItem,
+    incrementQuantity,
+    resetCart,
+} from "../redux/shoppingSlice";
+import { ToastContainer, toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 const CartItem = () => {
+    const dispatch = useDispatch();
     const productData = useSelector((item) => item.shopping.productData);
     console.log(productData);
 
@@ -21,7 +29,13 @@ const CartItem = () => {
                         className="flex items-center justify-between gap-6 mt-6"
                     >
                         <div className="flex items-center gap-2">
-                            <MdOutlineClose className="text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300" />
+                            <MdOutlineClose
+                                onClick={() =>
+                                    dispatch(deleteItem(item._id)) &
+                                    toast.error(`${item.title} is removed`)
+                                }
+                                className="text-xl text-gray-600 hover:text-red-600 cursor-pointer duration-300"
+                            />
                             <img
                                 className="w-32 h-32 object-cover"
                                 src={item.image}
@@ -41,12 +55,12 @@ const CartItem = () => {
                                                 title: item.title,
                                                 image: item.image,
                                                 price: item.price,
-                                                quantity: baseQuantity,
+                                                quantity: 1,
                                                 description: item.description,
                                             })
                                         )
                                     }
-                                    className="hover:bg-black hover:text-white px-2 rounded-full duration-500"
+                                    className="hover:bg-black hover:text-white px-2 rounded-full duration-500 cursor-pointer"
                                 >
                                     -
                                 </span>
@@ -59,12 +73,12 @@ const CartItem = () => {
                                                 title: item.title,
                                                 image: item.image,
                                                 price: item.price,
-                                                quantity: baseQuantity,
+                                                quantity: 1,
                                                 description: item.description,
                                             })
                                         )
                                     }
-                                    className="hover:bg-black hover:text-white px-2 rounded-full duration-500"
+                                    className="hover:bg-black hover:text-white px-2 rounded-full duration-500 cursor-pointer"
                                 >
                                     {" "}
                                     +
@@ -75,6 +89,34 @@ const CartItem = () => {
                     </div>
                 ))}
             </div>
+            <button
+                onClick={() =>
+                    dispatch(resetCart()) & toast.error("Your cart is empty")
+                }
+                className="bg-red-800 text-white mt-8 ml-7 py-1 px-6 hover:bg-red-900"
+            >
+                Reset Cart
+            </button>
+            <Link to="/">
+                <button className="mt-8 ml-7 flex items-center gap-2 text-gray-600 hover:text-black duration-300">
+                    <span>
+                        <HiOutlineArrowLeft />
+                    </span>
+                    Go Shopping
+                </button>
+            </Link>
+            <ToastContainer
+                position="top-left"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };
