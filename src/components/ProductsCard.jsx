@@ -15,8 +15,6 @@ const ProductsCard = ({ product }) => {
     };
 
     const rootId = idString(_id);
-
-    console.log(rootId);
     const productClick = () => {
         navigate(`/product/${rootId}`, {
             state: {
