@@ -5,6 +5,7 @@ import { useSelector } from "react-redux";
 
 export const Header = () => {
     const productData = useSelector((state) => state.shopping.productData);
+    const userInfo = useSelector((state) => state.shopping.userInfo);
 
     return (
         <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 font-bodyFont sticky top-0 z-50">
@@ -54,12 +55,15 @@ export const Header = () => {
                     </Link>
 
                     <div>
-                        <img
-                            className="w-9 h-9 rounded-full"
-                            src={userIcon}
-                            alt="userLogo"
-                        />
+                        <Link to="/login">
+                            <img
+                                className="w-9 h-9 rounded-full"
+                                src={userInfo ? userInfo.image : cartIcon}
+                                alt="userLogo"
+                            />
+                        </Link>
                     </div>
+                    {userInfo && <p>{userInfo.name}</p>}
                 </div>
             </div>
         </div>

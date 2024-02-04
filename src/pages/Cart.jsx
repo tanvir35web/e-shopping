@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/cartItem";
+import { toast } from "react-toastify";
 
 const Cart = () => {
     const productData = useSelector((item) => item.shopping.productData);
     const [totalAmount, setTotalAmount] = useState("");
+    const userInfo = useSelector((state) => state.shopping.userInfo);
+    const [payNow, setPayNow] = useState(false);
+
     useEffect(() => {
         let price = 0;
         productData.map((item) => {
@@ -13,6 +17,14 @@ const Cart = () => {
         });
         setTotalAmount(price.toFixed(2));
     }, [productData]);
+
+    const handlePaymentCheckout = () => {
+        if (userInfo) {
+            setPayNow(true);
+        } else {
+            toast.error("please sign in to checkout");
+        }
+    };
     return (
         <div>
             <img
@@ -35,7 +47,6 @@ const Cart = () => {
                         <p className="flex items-start gap-4 text-base">
                             Shipping
                             <span className="">
-                                
                                 Lorem ipsum dolor sit, amet consectetur
                                 adipisicing elit. Pariatur rerum
                             </span>
@@ -43,11 +54,22 @@ const Cart = () => {
                     </div>
                     <p className="flex justify-between mt-6  text-lg">
                         Total Amount
-                    <span className="font-bold text-xl"> $ {totalAmount} </span>
+                        <span className="font-bold text-xl">
+                            {" "}
+                            $ {totalAmount}{" "}
+                        </span>
                     </p>
-                    <button className="bg-black text-white text-base w-full py-3 mt-6 hover:bg-gray-800 duration-200">
+                    <button
+                        onClick={handlePaymentCheckout}
+                        className="bg-black text-white text-base w-full py-3 mt-6 hover:bg-gray-800 duration-200 rounded"
+                    >
                         proceed to checkout
                     </button>
+                    {payNow && (
+                        <button className="bg-black text-white text-base w-full py-3 mt-6 hover:bg-gray-800 duration-200 rounded">
+                            Go for Payment
+                        </button>
+                    )}
                 </div>
             </div>
         </div>
