@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/cartItem";
 import { toast } from "react-toastify";
+import Modal from "../components/Modal";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
     const productData = useSelector((item) => item.shopping.productData);
@@ -23,8 +25,16 @@ const Cart = () => {
             setPayNow(true);
         } else {
             toast.error("please sign in to checkout");
+            toggleModal();
         }
     };
+
+    const [modalOpen, setModalOpen] = useState(false);
+
+    const toggleModal = () => {
+        setModalOpen(!modalOpen);
+    };
+
     return (
         <div>
             <img
@@ -70,6 +80,17 @@ const Cart = () => {
                             Go for Payment
                         </button>
                     )}
+
+                    <Modal isOpen={modalOpen} toggleModal={toggleModal}>
+                        <div className="flex flex-col items-center">
+                            <p className="mb-7">Please Login to checkout</p>
+                            <Link to="/login">
+                                <button className="w-96  text-base font-semibold border border-gray-300 px-6 py-2 hover:bg-blue-950  mt-6  cursor-pointer rounded bg-gray-100 text-black hover:text-white">
+                                    LOGIN
+                                </button>
+                            </Link>
+                        </div>
+                    </Modal>
                 </div>
             </div>
         </div>

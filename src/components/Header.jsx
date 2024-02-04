@@ -1,5 +1,5 @@
 import React from "react";
-import { cartIcon, darkLogo, userIcon } from "../assets";
+import { cartIcon, darkLogo, userImg } from "../assets";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -19,25 +19,20 @@ export const Header = () => {
                     <ul className="flex items-center gap-8">
                         <Link to="/">
                             <li className="text-base text-black font-semibold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer ">
-                                {" "}
-                                Home{" "}
+                                Home
                             </li>
                         </Link>
                         <li className="text-base text-black font-semibold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer ">
-                            {" "}
-                            Pages{" "}
+                            Pages
                         </li>
                         <li className="text-base text-black font-semibold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer ">
-                            {" "}
-                            shop{" "}
+                            shop
                         </li>
                         <li className="text-base text-black font-semibold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer ">
-                            {" "}
-                            Element{" "}
+                            Element
                         </li>
                         <li className="text-base text-black font-semibold hover:text-orange-900 hover:underline underline-offset-2 decoration-[1px] cursor-pointer ">
-                            {" "}
-                            Blog{" "}
+                            Blog
                         </li>
                     </ul>
                     <Link to="/cart">
@@ -48,22 +43,32 @@ export const Header = () => {
                                 alt="Cart image"
                             />
                             <p className="text-lg font-bold">
-                                {" "}
-                                {productData.length}{" "}
+                                {productData.length}
                             </p>
                         </div>
                     </Link>
 
-                    <div>
-                        <Link to="/login">
+                    <Link to="/login">
+                        <div className="flex gap-3 items-center ">
                             <img
                                 className="w-9 h-9 rounded-full"
-                                src={userInfo ? userInfo.image : cartIcon}
+                                src={userInfo ? userInfo.image : userImg}
                                 alt="userLogo"
+                                style={
+                                    userInfo
+                                        ? {}
+                                        : {
+                                              width: "1.85rem",
+                                              height: "1.85rem",
+                                          }
+                                }
                             />
-                        </Link>
-                    </div>
-                    {userInfo && <p>{userInfo.name}</p>}
+
+                            {userInfo && (
+                                <p className="font-medium"> {userInfo.name} </p>
+                            )}
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

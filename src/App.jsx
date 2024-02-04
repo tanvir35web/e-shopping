@@ -16,6 +16,7 @@ import {
 } from "react-router-dom";
 import ProductDetails from "./components/ProductDetails";
 import Login from "./pages/Login";
+import Modal from "./components/Modal";
 
 const Layout = () => {
   return (
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login/>
+      },
+      {
+        path: "/modal",
+        element: <Modal/>
       }
     ],
   },
