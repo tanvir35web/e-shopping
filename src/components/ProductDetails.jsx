@@ -17,10 +17,10 @@ const ProductDetails = () => {
 
     return (
         <div>
-            <div className="max-w-screen-xl mx-auto my-10 flex gap-10">
-                <div className="w-2/5 relative">
+            <div className="max-w-screen-xl mx-auto my-10 flex flex-col lg:flex-row items-center gap-10">
+                <div className="w-4/5 lg:w-2/5 relative">
                     <img
-                        className="w-full h-[650px] object-cover rounded-2xl shadow-lg"
+                        className=" lg:w-full h-auto lg:h-[650px] object-cover rounded-2xl shadow-lg"
                         src={details.image}
                         alt="product image"
                     />
@@ -33,7 +33,7 @@ const ProductDetails = () => {
                     </div>
                 </div>
 
-                <div className="w-3/5 flex flex-col justify-center gap-12 ">
+                <div className="w-4/5 flex flex-col justify-center gap-12 ">
                     <div>
                         <h2 className="text-4xl font-semibold">
                             {details.title}
@@ -63,7 +63,7 @@ const ProductDetails = () => {
                         {details.description}
                     </p>
                     <div>
-                        <div className="flex items-center gap-6">
+                        <div className="flex items-center gap-6 sm:flex-row flex-col lg:flex-row">
                             <div className="flex items-center gap-6 border-[2px] px-4 py-2">
                                 <p className="text-sm">Quantity</p>
                                 <div className="flex items-center gap-4 text-sm font-semibold">
@@ -101,7 +101,8 @@ const ProductDetails = () => {
                                             quantity: baseQuantity,
                                             description: details.description,
                                         })
-                                    ) & toast.success(`${details.title} is added`)
+                                    ) &
+                                    toast.success(`${details.title} is added`)
                                 }
                                 className="bg-gray-700 px-6 py-2 text-white hover:bg-amber-300 hover:text-black font-semibold  duration-300"
                             >
