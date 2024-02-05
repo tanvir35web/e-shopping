@@ -1,0 +1,12 @@
+.sideNav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: #dddddd;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 200px;
+    height: 100vh;
+
+}
