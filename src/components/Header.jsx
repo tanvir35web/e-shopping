@@ -17,8 +17,8 @@ export const Header = () => {
     };
 
     return (
-        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 font-bodyFont sticky top-0 z-50 p-2">
-            <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between">
+        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 font-bodyFont sticky top-0 z-50 p-2 ">
+            <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between overflow-hidden">
                 <Link to="/">
                     <div>
                         <img className="w-32" src={darkLogo} alt="dark logo" />
@@ -36,12 +36,12 @@ export const Header = () => {
 
                 <div
                     className={` ${
-                        showNav ? "sideNav" : "hidden"
-                    } items-center gap-8 md:flex`}
+                        showNav ? "sideNavActive" : ""
+                    } items-center gap-8 md:flex sideNav overflow-hidden`}
                 >
                     <ul
                         className={`flex items-center gap-8 ${
-                            showNav ? "flex-col" : "flex-row"
+                            showNav ? "flex-col" : "flex-row "
                         } `}
                     >
                         {showNav ? (

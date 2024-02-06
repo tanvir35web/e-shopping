@@ -1,12 +1,18 @@
-.sideNav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    background: #dddddd;
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 100vh;
+@media (max-width: 768px) {
+    .sideNav {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background: #e1dede;
+        position: absolute;
+        top: 0;
+        right: -200px;
+        width: 200px;
+        height: 100vh;
+        transition: 0.3s ease;
+    }
 
+    .sideNavActive {
+        right: 0;
+    }
 }

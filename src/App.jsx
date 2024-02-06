@@ -20,12 +20,12 @@ import Modal from "./components/Modal";
 
 const Layout = () => {
   return (
-    <>
+    <div className="overflow-hidden">
       <Header />
       <ScrollRestoration/>
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
