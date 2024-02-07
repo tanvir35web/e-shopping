@@ -21,7 +21,6 @@ export const Header = () => {
         window.scrollTo({
             top: 0,
             behavior: "smooth",
-            duration: 1500 
         });
     };
 
@@ -61,25 +60,24 @@ export const Header = () => {
                         ) : (
                             ""
                         )}
-                        <button
-                            onClick={scrollToTop}
-                            style={{
-                                position: "fixed",
-                                bottom: "20px",
-                                right: "20px",
-                            }}
-                        >
-                            Scroll To Top
-                        </button>
+                        
 
                         <Link to="/">
                             <NavItem onClick={toggleNav} label={"Home"} />
                         </Link>
 
-                        <NavItem onClick={toggleNav} label={"Shop"} />
-                        <NavItem onClick={toggleNav} label={"Cart"} />
-                        <NavItem onClick={toggleNav} label={"User"} />
-                        <NavItem onClick={toggleNav} label={"About"} />
+                        <Link to="/">
+                            <NavItem onClick={toggleNav} label={"Shop"} />
+                        </Link>
+                        <Link to="/cart">
+                            <NavItem onClick={toggleNav} label={"Cart"} />
+                        </Link>
+                        <Link to="/login">
+                            <NavItem onClick={toggleNav} label={"User"} />
+                        </Link>
+                        <Link to="/">
+                            <NavItem onClick={toggleNav} label={"About"} />
+                        </Link>
                     </ul>
                     <Link to="/cart">
                         <div

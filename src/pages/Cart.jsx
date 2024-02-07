@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import CartItem from "../components/cartItem";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import Modal from "../components/Modal";
 import { Link } from "react-router-dom";
 import { cartHeroImg } from "../assets";
@@ -94,6 +94,18 @@ const Cart = () => {
                     </Modal>
                 </div>
             </div>
+            <ToastContainer
+                position="top-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
         </div>
     );
 };
