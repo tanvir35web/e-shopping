@@ -3,11 +3,12 @@
         display: flex;
         flex-direction: column;
         gap: 10px;
-        background: #e1dede;
+        background: #d0d0d070;
+        backdrop-filter: blur(20px);
         position: absolute;
         top: 0;
-        right: -200px;
-        width: 200px;
+        right: -100vw;
+        width: 100vw;
         height: 100vh;
         transition: 0.3s ease;
     }
