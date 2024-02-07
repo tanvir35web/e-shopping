@@ -11,6 +11,8 @@ export default {
 
             lg: "1280px",
             // => @media (min-width: 1440px) { ... }
+            xl: "1480px",
+            // => @media (min-width: 1440px) { ... }
         },
         extend: {
             fontFamily: {
