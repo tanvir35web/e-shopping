@@ -50,7 +50,7 @@ const Login = () => {
     };
 
     return (
-        <div className="p-10 w-full h-[500px] flex items-center justify-center">
+        <div className="p-10 w-full h-[500px] flex items-center justify-center mt-[80px]">
             <div className="flex flex-col gap-10">
                 <div className="flex flex-col gap-6">
                     {!userInfo && (

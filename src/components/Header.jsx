@@ -17,7 +17,7 @@ export const Header = () => {
     };
 
     return (
-        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-400 font-bodyFont sticky top-0 z-50 p-2 ">
+        <div className="w-full h-20 bg-white border-b-[1px] border-b-gray-300 font-bodyFont z-20 p-2 fixed top-0">
             <div className="max-w-screen-xl h-full mx-auto flex items-center justify-between overflow-hidden">
                 <Link to="/">
                     <div>

@@ -39,7 +39,7 @@ const Cart = () => {
     return (
         <div>
             <img
-                className="w-full h-[300px] object-cover"
+                className="w-full h-[300px] object-cover mt-[80px]"
                 src={cartHeroImg}
                 alt="cart section banner image"
             />

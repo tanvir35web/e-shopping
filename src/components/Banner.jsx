@@ -20,7 +20,7 @@ const Banner = () => {
 
     return (
         <>
-            <div className="w-full h-auto overflow-x-hidden">
+            <div className="w-full h-auto overflow-x-hidden mt-[80px]">
                 <div className="w-screen relative">
                     <div
                         style={{

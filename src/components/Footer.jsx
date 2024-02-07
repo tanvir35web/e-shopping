@@ -15,7 +15,7 @@ import { RiMailSendFill } from "react-icons/ri";
 const Footer = () => {
     return (
         <div className="bg-gray-950 text-gray-300 py-20 font-bodyFont">
-            <div className="max-w-screen-xl w-4/5 mx-auto grid grid-row-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            <div className="max-w-screen-xl w-11/12   mx-auto grid grid-row-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
                 <div className="flex flex-col gap-5">
                     <img className="w-32" src={lightLogo} alt="Payment logos" />
                     <p>@ Tanvirul Islam </p>
