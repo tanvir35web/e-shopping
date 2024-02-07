@@ -3,7 +3,7 @@ import cartIcon from "./cart-dash.svg";
 
 import paymentLogos from "./payment logos.jpg";
 import lightLogo from "./logo Light.png";
-import cartImg from "./shop.jpg";
+import cartHeroImg from "./cartHeroImg.jpg";
 import userImg from "./person-circle.svg";
 
 import s1 from "./slider1.jpg";
@@ -20,6 +20,6 @@ export {
     s4,
     paymentLogos,
     lightLogo,
-    cartImg,
     userImg,
+    cartHeroImg,
 };

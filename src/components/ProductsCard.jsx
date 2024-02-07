@@ -24,13 +24,13 @@ const ProductsCard = ({ product }) => {
     };
 
     return (
-        <div
-            
-            className="group border-[1px] relative shadow-sm "
-        >
-            <div onClick={productClick} className="w-full h-[400px] overflow-hidden cursor-pointer ">
+        <div className="group border-[1px] shadow-sm relative rounded-xl p-2 ">
+            <div
+                onClick={productClick}
+                className="w-full h-[400px] overflow-hidden rounded-md  cursor-pointer "
+            >
                 <img
-                    className="w-full h-full object-cover group-hover:scale-110 duration-500 "
+                    className="w-full h-full object-cover  group-hover:scale-110 duration-500 "
                     src={product.image}
                     alt="product Image"
                 />
@@ -72,7 +72,7 @@ const ProductsCard = ({ product }) => {
                 </div>
             </div>
             <div className="text-base mx-2 my-1">{product.category}</div>
-            <div className="absolute top-4 right-0">
+            <div className="absolute top-4 right-0 pr-2">
                 {product.isNew && (
                     <p className="bg-black text-white font-semibold px-6 py-1">
                         sale

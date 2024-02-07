@@ -16,18 +16,18 @@ const CartItem = () => {
     const productData = useSelector((item) => item.shopping.productData);
 
     return (
-        <div className="w-full lg:w-2/3 pr-10 ">
-            <div className="w-full">
+        <div className="w-full lg:w-2/3 items-center ">
+            <div className="w-full text-center md:text-left">
                 <h2 className="text-2xl">Shopping Cart</h2>
             </div>
 
-            <div>
+            <div className="">
                 {productData.map((item) => (
                     <div
                         key={item._id}
-                        className="flex items-center justify-between gap-6 mt-6 border-b border-b-gray-200  p-2"
+                        className="flex items-center justify-center md:justify-between gap-3 mt-6 border-b border-b-gray-200 flex-col md:flex-row p-2 bg-gray-100 md:bg-gray-100  shadow-sm rounded-xl"
                     >
-                        <div className="flex items-center gap-2">
+                        <div className="flex flex-col md:flex-row items-center gap-6 ">
                             <MdOutlineClose
                                 onClick={() =>
                                     dispatch(deleteItem(item._id)) &
@@ -41,8 +41,8 @@ const CartItem = () => {
                                 alt="product image"
                             />
                         </div>
-                        <h2 className="w-52">{item.title}</h2>
-                        <p className="w-10">{item.price}</p>
+                        <h2 className="w-52 text-center">{item.title}</h2>
+                        <p className="w-10 text-center">{item.price}</p>
                         <div className="flex items-center gap-6 border-[2px] px-4 py-2">
                             <p className="text-sm">Quantity</p>
                             <div className="flex items-center gap-4 text-sm font-semibold">
@@ -79,12 +79,13 @@ const CartItem = () => {
                                     }
                                     className="hover:bg-black hover:text-white px-2 rounded-full duration-500 cursor-pointer"
                                 >
-                                    {" "}
                                     +
                                 </span>
                             </div>
                         </div>
-                        <p className="w-20"> $ {item.quantity * item.price} </p>
+                        <p className="w-20 text-center">
+                            $ {item.quantity * item.price}
+                        </p>
                     </div>
                 ))}
             </div>

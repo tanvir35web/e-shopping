@@ -4,6 +4,7 @@ import CartItem from "../components/cartItem";
 import { toast } from "react-toastify";
 import Modal from "../components/Modal";
 import { Link } from "react-router-dom";
+import { cartHeroImg } from "../assets";
 
 const Cart = () => {
     const productData = useSelector((item) => item.shopping.productData);
@@ -38,14 +39,14 @@ const Cart = () => {
     return (
         <div>
             <img
-                className="w-full h-[960px] object-cover"
-                src="https://images.pexels.com/photos/5632346/pexels-photo-5632346.jpeg"
+                className="w-full h-[300px] object-cover"
+                src={cartHeroImg}
                 alt="cart section banner image"
             />
 
-            <div className="max-w-screen-xl mx-auto py-20 flex flex-wrap w-11/12">
+            <div className="max-w-screen-xl mx-auto py-20 flex flex-wrap gap-10  w-11/12">
                 <CartItem />
-                <div className="lg:w-[350px] h-[550px] bg-gray-100  py-10 px-6 rounded-lg mt-16 md:w-full">
+                <div className="lg:w-[350px] h-[500px] bg-gray-100  py-10 mt-0 md:mt-14 px-6 rounded-lg  md:w-full">
                     <div className="flex flex-col border-b-[1px] gap-6 border-b-gray-400 pb-6">
                         <h2 className="text-2xl font-medium">Cart Total</h2>
                         <p className="flex items-center gap-4 mt-3 text-base">

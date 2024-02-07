@@ -9,7 +9,7 @@ const Products = ({ products }) => {
                     Shopping Everyday
                 </h1>
                 <span className="w-20 h-[3px] bg-black rounded-xl"></span>
-                <p className="max-w-[700px] text-center text-gray-600">
+                <p className="max-w-[900px] text-center text-gray-600 px-6  text-justify ">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit.
                     Quos, voluptates assumenda debitis sit voluptas, officia
                     numquam ea recusandae quam impedit facilis voluptatibus
@@ -19,7 +19,7 @@ const Products = ({ products }) => {
                     tenetur, magni, atque officiis iste.
                 </p>
             </div>
-            <div className="max-w-screen-xl mx-auto py-10 grid lg:grid-cols-4 gap-10 sm:grid-cols-2 w-11/12">
+            <div className="max-w-screen-xl mx-auto py-10 grid lg:grid-cols-4 gap-10 sm:grid-cols-2 w-11/12 ">
                 {products.map((item) => (
                     <ProductsCard key={item._id} product={item} />
                 ))}
